@@ -1401,7 +1401,10 @@
 		},
 
 		keydown: function(e){
-			if (!this.picker.is(':visible')){
+      if (!this.picker.is(':visible') && this.o.showOnKeydown === false) {
+        return;
+      }
+      if (!this.picker.is(':visible')){
 				if (e.keyCode === 40 || e.keyCode === 27) { // allow down to re-show picker
 					this.show();
 					e.stopPropagation();
@@ -1712,6 +1715,7 @@
 		disableTouchKeyboard: false,
 		enableOnReadonly: true,
 		showOnFocus: true,
+    showOnKeydown: true,
 		zIndexOffset: 10,
 		container: 'body',
 		immediateUpdates: false,
